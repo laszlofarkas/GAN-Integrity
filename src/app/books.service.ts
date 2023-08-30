@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-type Book = {
+export type Book = {
   id: number;
   author: string;
   title: string;
