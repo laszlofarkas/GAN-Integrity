@@ -25,7 +25,7 @@ export class BooksService {
         title: `title ${i}`,
         description: `Description ${i}`,
         releaseDate: date,
-      })
+      });
     }
   }
 
