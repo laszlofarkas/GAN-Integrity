@@ -13,24 +13,28 @@ export type Book = {
   providedIn: 'root',
 })
 export class BooksService {
-  private books: Book[] = [];
+  private books: Record<string, Book> = {};
 
   constructor() {
     for (let i = 0; i < 10; i++) {
       const date = new Date('2023-01-01');
       date.setMonth(i);
-      this.books.push({
+      this.books[i] = {
         id: i,
         author: `author ${i}`,
         title: `title ${i}`,
         description: `Description ${i}`,
         releaseDate: date,
-      });
+      };
     }
   }
 
   getBooks(): Observable<Book[]> {
-    return of(this.books);
+    return of(Object.values(this.books));
+  }
+
+  getBookById(id: number): Observable<Book> {
+    return of(this.books[id]);
   }
 
   searchBooks(searchText: string): Observable<Book[]> {

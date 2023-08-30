@@ -1,1 +1,6 @@
-<p>book-details works!</p>
+<ng-container *ngIf="book$ | async as book">
+  <div>author: {{ book.author }}</div>
+  <div>title: {{ book.title }}</div>
+  <div>released: {{ book.releaseDate | date }}</div>
+  <div>description: {{ book.description }}</div>
+</ng-container>
