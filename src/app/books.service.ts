@@ -33,7 +33,7 @@ export class BooksService {
     return of(Object.values(this.books));
   }
 
-  getBookById(id: number): Observable<Book> {
+  getBookById(id: Book['id']): Observable<Book> {
     return of(this.books[id]);
   }
 
