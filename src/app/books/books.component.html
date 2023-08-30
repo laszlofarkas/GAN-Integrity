@@ -1,7 +1,3 @@
 <ng-container *ngIf="books$ | async as books">
-  <app-book-tile
-    *ngFor="let book of books"
-    [book]="book"
-    (click)="openDetail(book.id)"
-  ></app-book-tile>
+  <app-book-tile *ngFor="let book of books" [book]="book"></app-book-tile>
 </ng-container>
