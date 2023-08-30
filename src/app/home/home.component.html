@@ -1,3 +1,16 @@
-<p>home works!</p>
+<input
+  type="text"
+  name="Search"
+  id="search"
+  aria-label="Search for book"
+  (input)="searchChange($event)"
+/>
 
-<app-book-tile *ngFor="let book of books | async" [book]="book"></app-book-tile>
+<ng-container *ngIf="books$ | async as books; else loading">
+  <ng-container *ngIf="books.length > 0; else notFound">
+    <app-book-tile *ngFor="let book of books" [book]="book"></app-book-tile>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading><div>Loading...</div></ng-template>
+<ng-template #notFound><div>No book has been found.</div></ng-template>

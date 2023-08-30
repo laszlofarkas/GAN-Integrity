@@ -33,8 +33,25 @@ export class BooksService {
     return of(this.books);
   }
 
-  getLatest(count: number): Observable<Book[]> {
+  searchBooks(searchText: string): Observable<Book[]> {
     return this.getBooks().pipe(
+      map((books) => {
+        if (!searchText) {
+          return books;
+        }
+        const lowerCaseSearch = searchText.toLowerCase();
+        return books.filter(
+          (book) =>
+            book.author.toLowerCase().includes(lowerCaseSearch) ||
+            book.title.toLowerCase().includes(lowerCaseSearch) ||
+            book.description.toLowerCase().includes(lowerCaseSearch)
+        );
+      })
+    );
+  }
+
+  getLatest(count: number, searchText: string): Observable<Book[]> {
+    return this.searchBooks(searchText).pipe(
       map((books) =>
         books
           .sort((a, b) => b.releaseDate.valueOf() - a.releaseDate.valueOf())
