@@ -37,7 +37,7 @@ export class BooksService {
     return of(this.books[id]);
   }
 
-  searchBooks(searchText: string): Observable<Book[]> {
+  searchBooks(searchText: string | null): Observable<Book[]> {
     return this.getBooks().pipe(
       map((books) => {
         if (!searchText) {
@@ -54,7 +54,7 @@ export class BooksService {
     );
   }
 
-  getLatest(count: number, searchText: string): Observable<Book[]> {
+  getLatest(count: number, searchText: string | null): Observable<Book[]> {
     return this.searchBooks(searchText).pipe(
       map((books) =>
         books

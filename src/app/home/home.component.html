@@ -3,7 +3,7 @@
   name="Search"
   id="search"
   aria-label="Search for book"
-  (input)="searchChange($event)"
+  [formControl]="searchControl"
 />
 
 <ng-container *ngIf="books$ | async as books; else loading">
