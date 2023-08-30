@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 
 export type Book = {
   id: number;
@@ -31,5 +31,15 @@ export class BooksService {
 
   getBooks(): Observable<Book[]> {
     return of(this.books);
+  }
+
+  getLatest(count: number): Observable<Book[]> {
+    return this.getBooks().pipe(
+      map((books) =>
+        books
+          .sort((a, b) => b.releaseDate.valueOf() - a.releaseDate.valueOf())
+          .slice(0, count)
+      )
+    );
   }
 }

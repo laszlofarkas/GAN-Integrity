@@ -13,6 +13,6 @@ export class HomeComponent implements OnInit{
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    this.books = this.booksService.getBooks();
+    this.books = this.booksService.getLatest(3);
   }
 }
