@@ -1,6 +1,6 @@
-<div class="wrapper" (click)="openDetail(book.id)">
+<div class="box mb-2" (click)="openDetail(book.id)">
   <div>
-    <span>{{ book.author }} - {{ book.title }}</span>
+    <span class="is-size-4 mr-3">{{ book.title }}</span><span class="is-size-5">by {{ book.author }}</span>
   </div>
   <div>{{ book.releaseDate | date }}</div>
 </div>
