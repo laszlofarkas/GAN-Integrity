@@ -2,6 +2,9 @@
   <div class="columns">
     <app-menu class="column is-one-fifth"></app-menu>
     <div class="column">
+      <div class="block content">
+        <h1>{{ title.getTitle() }}</h1>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </div>

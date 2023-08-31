@@ -8,11 +8,11 @@ const routes: Routes = [
   {
     path: 'book',
     children: [
-      { path: ':id', component: BookDetailsComponent },
-      { path: '**', component: BooksComponent },
+      { path: ':id', component: BookDetailsComponent, title: 'Book details' },
+      { path: '**', component: BooksComponent, title: 'Books' },
     ],
   },
-  { path: '**', component: HomeComponent },
+  { path: '**', component: HomeComponent, title: 'Home' },
 ];
 
 @NgModule({
